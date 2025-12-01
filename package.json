@@ -2,7 +2,7 @@
   "name": "epub-toolbox",
   "displayName": "EPUB Toolbox",
   "description": "Read and preview EPUB files directly in VS Code with full table of contents navigation",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "publisher": "morten-teinum",
   "icon": "icon.png",
   "repository": {
