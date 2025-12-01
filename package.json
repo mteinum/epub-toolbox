@@ -4,6 +4,7 @@
   "description": "Read and preview EPUB files directly in VS Code with full table of contents navigation",
   "version": "0.1.7",
   "publisher": "morten-teinum",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/mteinum/epub-toolbox.git"
