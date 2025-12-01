@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import { runTests } from '@vscode/test-electron';
 
 async function main() {
@@ -9,9 +10,13 @@ async function main() {
         // The path to test runner
         const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
-        // Try to use local VS Code installation first
-        const vscodeExecutablePath = process.env.VSCODE_PATH || 
-            (process.platform === 'darwin' ? '/Applications/Visual Studio Code.app/Contents/MacOS/Electron' : undefined);
+        // Try to use local VS Code installation if it exists (for local dev with proxy issues)
+        let vscodeExecutablePath: string | undefined;
+        const localVSCodePath = '/Applications/Visual Studio Code.app/Contents/MacOS/Electron';
+        
+        if (process.platform === 'darwin' && fs.existsSync(localVSCodePath)) {
+            vscodeExecutablePath = localVSCodePath;
+        }
 
         // Download VS Code, unzip it and run the integration test
         await runTests({ 
