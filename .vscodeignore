@@ -1,7 +1,12 @@
 src/
 tsconfig.json
+tsconfig.test.json
 esbuild.js
 .vscode/
 .gitignore
+.github/
+scripts/
 node_modules/
+out/test/
+test-results.json
 *.map
