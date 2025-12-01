@@ -42,7 +42,7 @@ jobs:
           VSCODE_TEST_VERSION: stable
       
       - name: Publish Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         if: always()
         with:
           name: Test Results (${{ matrix.os }})
