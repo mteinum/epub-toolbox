@@ -36,3 +36,11 @@ jobs:
           run: npm test
         env:
           VSCODE_TEST_VERSION: stable
+      
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results (${{ matrix.os }})
+          path: test-results.json
+          reporter: mocha-json

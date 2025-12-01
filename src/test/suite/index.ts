@@ -1,12 +1,14 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import Mocha from 'mocha';
 import { glob } from 'glob';
 
 export async function run(): Promise<void> {
-    // Create the mocha test
+    // Create the mocha test with spec reporter for console
     const mocha = new Mocha({
         ui: 'tdd',
-        color: true
+        color: true,
+        reporter: 'spec'
     });
 
     const testsRoot = path.resolve(__dirname, '..');
@@ -20,11 +22,62 @@ export async function run(): Promise<void> {
     // Run the mocha test
     return new Promise<void>((resolve, reject) => {
         try {
-            mocha.run(failures => {
+            const runner = mocha.run(failures => {
                 if (failures > 0) {
                     reject(new Error(`${failures} tests failed.`));
                 } else {
                     resolve();
+                }
+            });
+
+            // Collect test results for JSON report
+            const results: any = {
+                stats: {},
+                tests: [],
+                passes: [],
+                failures: [],
+                pending: []
+            };
+
+            runner.on('pass', (test: any) => {
+                results.passes.push({
+                    title: test.title,
+                    fullTitle: test.fullTitle(),
+                    duration: test.duration,
+                    state: 'passed'
+                });
+                results.tests.push(test);
+            });
+
+            runner.on('fail', (test: any, err: any) => {
+                results.failures.push({
+                    title: test.title,
+                    fullTitle: test.fullTitle(),
+                    duration: test.duration,
+                    state: 'failed',
+                    error: err.message,
+                    stack: err.stack
+                });
+                results.tests.push(test);
+            });
+
+            runner.on('end', () => {
+                results.stats = {
+                    suites: runner.stats?.suites,
+                    tests: runner.stats?.tests,
+                    passes: runner.stats?.passes,
+                    pending: runner.stats?.pending,
+                    failures: runner.stats?.failures,
+                    duration: runner.stats?.duration
+                };
+
+                // Write JSON report
+                const reportPath = path.resolve(__dirname, '../../../test-results.json');
+                try {
+                    fs.writeFileSync(reportPath, JSON.stringify(results, null, 2));
+                    console.log(`\nTest report written to: ${reportPath}`);
+                } catch (err) {
+                    console.error('Failed to write test report:', err);
                 }
             });
         } catch (err) {
