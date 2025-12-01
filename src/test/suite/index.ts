@@ -40,25 +40,27 @@ export async function run(): Promise<void> {
             };
 
             runner.on('pass', (test: any) => {
-                results.passes.push({
+                const testResult = {
                     title: test.title,
                     fullTitle: test.fullTitle(),
                     duration: test.duration,
                     state: 'passed'
-                });
-                results.tests.push(test);
+                };
+                results.passes.push(testResult);
+                results.tests.push(testResult);
             });
 
             runner.on('fail', (test: any, err: any) => {
-                results.failures.push({
+                const testResult = {
                     title: test.title,
                     fullTitle: test.fullTitle(),
                     duration: test.duration,
                     state: 'failed',
                     error: err.message,
                     stack: err.stack
-                });
-                results.tests.push(test);
+                };
+                results.failures.push(testResult);
+                results.tests.push(testResult);
             });
 
             runner.on('end', () => {
