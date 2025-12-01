@@ -27,8 +27,12 @@
     "languages": [
       {
         "id": "epub",
-        "extensions": [".epub"],
-        "aliases": ["EPUB"]
+        "extensions": [
+          ".epub"
+        ],
+        "aliases": [
+          "EPUB"
+        ]
       }
     ]
   },
