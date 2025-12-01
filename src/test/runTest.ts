@@ -9,10 +9,15 @@ async function main() {
         // The path to test runner
         const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
+        // Try to use local VS Code installation first
+        const vscodeExecutablePath = process.env.VSCODE_PATH || 
+            (process.platform === 'darwin' ? '/Applications/Visual Studio Code.app/Contents/MacOS/Electron' : undefined);
+
         // Download VS Code, unzip it and run the integration test
         await runTests({ 
             extensionDevelopmentPath, 
             extensionTestsPath,
+            vscodeExecutablePath,
             version: 'stable'
         });
     } catch (err) {
