@@ -67,6 +67,23 @@ epub-toolbox/
 
 - None at this time
 
+## Releasing
+
+To create a new release:
+
+1. Update the version in `package.json` if needed
+2. Create and push a git tag with the version number:
+   ```bash
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+3. GitHub Actions will automatically:
+   - Build and package the extension
+   - Create a GitHub release
+   - Attach the `.vsix` file to the release
+
+The version number in the tag (e.g., `v0.1.0`) will be used for the release.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
