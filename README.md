@@ -1,5 +1,9 @@
 # EPUB Toolbox
 
+[![Release](https://github.com/mteinum/epub-toolbox/actions/workflows/release.yml/badge.svg)](https://github.com/mteinum/epub-toolbox/actions/workflows/release.yml)
+[![GitHub release](https://img.shields.io/github/v/release/mteinum/epub-toolbox)](https://github.com/mteinum/epub-toolbox/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Visual Studio Code extension for reading and previewing EPUB files directly in your editor.
 
 ## Features
