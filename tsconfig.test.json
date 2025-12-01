@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["node"]
+    "types": ["mocha", "node"]
   },
-  "exclude": ["node_modules", ".vscode-test", "**/*.test.ts"]
+  "exclude": ["node_modules", ".vscode-test"]
 }

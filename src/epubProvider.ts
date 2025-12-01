@@ -1,13 +1,12 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 export class EpubEditorProvider implements vscode.CustomReadonlyEditorProvider {
     constructor(private readonly context: vscode.ExtensionContext) {}
 
     async openCustomDocument(
         uri: vscode.Uri,
-        openContext: vscode.CustomDocumentOpenContext,
-        token: vscode.CancellationToken
+        _openContext: vscode.CustomDocumentOpenContext,
+        _token: vscode.CancellationToken
     ): Promise<vscode.CustomDocument> {
         return { uri, dispose: () => {} };
     }
@@ -15,7 +14,7 @@ export class EpubEditorProvider implements vscode.CustomReadonlyEditorProvider {
     async resolveCustomEditor(
         document: vscode.CustomDocument,
         webviewPanel: vscode.WebviewPanel,
-        token: vscode.CancellationToken
+        _token: vscode.CancellationToken
     ): Promise<void> {
         // Configure webview
         webviewPanel.webview.options = {

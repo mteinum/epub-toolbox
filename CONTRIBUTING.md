@@ -80,6 +80,25 @@ The extension automatically publishes to the VS Code Marketplace via GitHub Acti
 
 ## Testing
 
+### Running Tests
+
+The project includes automated tests using Mocha and the VS Code Test Runner:
+
+```bash
+# Run all tests
+npm test
+
+# Run linter
+npm run lint
+
+# Compile tests only
+npm run compile-tests
+```
+
+**Note**: Tests require downloading VS Code for the test environment. If you encounter network issues, the tests will run automatically in CI.
+
+### Manual Testing
+
 1. Run the extension in debug mode (F5)
 2. Open an EPUB file to test functionality
 3. Verify:
@@ -88,6 +107,36 @@ The extension automatically publishes to the VS Code Marketplace via GitHub Acti
    - Metadata displays properly
    - Cover image shows when available
    - Theme integration works in light/dark modes
+
+### Writing Tests
+
+Test files are located in `src/test/suite/` and follow these conventions:
+
+- Use Mocha TDD-style tests (`suite`, `test`, `assert`)
+- Name test files with `.test.ts` extension
+- Import VS Code API and extension modules as needed
+
+Example test:
+
+```typescript
+import * as assert from 'assert';
+import * as vscode from 'vscode';
+
+suite('My Test Suite', () => {
+    test('should do something', () => {
+        assert.strictEqual(1 + 1, 2);
+    });
+});
+```
+
+### Continuous Integration
+
+Tests run automatically on:
+- Push to `main` branch
+- Pull requests to `main` branch
+- All major platforms: Ubuntu, Windows, macOS
+
+See `.github/workflows/test.yml` for the CI configuration.
 
 ## Contributing
 
