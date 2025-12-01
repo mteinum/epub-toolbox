@@ -51,6 +51,12 @@ code --install-extension morten-teinum.epub-toolbox
 
 - VS Code version 1.80.0 or higher
 
+## Support
+
+If you find this extension helpful, consider supporting its development:
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/mteinum)
+
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, build instructions, and release process.
