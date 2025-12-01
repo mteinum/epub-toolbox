@@ -1,0 +1,37 @@
+<!-- filepath: icon.svg -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="128" fill="#007ACC"/>
+  
+  <!-- Book -->
+  <g transform="translate(128, 128)">
+    <!-- Book shadow -->
+    <rect x="-68" y="-78" width="136" height="156" fill="#000000" opacity="0.15" rx="4"/>
+    
+    <!-- Book cover (main) -->
+    <rect x="-70" y="-80" width="140" height="160" fill="#FFFFFF" rx="4"/>
+    
+    <!-- Book spine (left edge) -->
+    <rect x="-70" y="-80" width="12" height="160" fill="#E8E8E8" rx="4"/>
+    <rect x="-66" y="-80" width="4" height="160" fill="#D0D0D0"/>
+    
+    <!-- Book pages (right edge) -->
+    <rect x="58" y="-78" width="12" height="156" fill="#F5F5F5" rx="2"/>
+    <line x1="62" y1="-75" x2="62" y2="75" stroke="#E0E0E0" stroke-width="1"/>
+    <line x1="65" y1="-75" x2="65" y2="75" stroke="#E0E0E0" stroke-width="1"/>
+    
+    <!-- Text: EPUB -->
+    <text x="0" y="-20" font-family="Arial, sans-serif" font-size="36" font-weight="bold" 
+          fill="#007ACC" text-anchor="middle">EPUB</text>
+    
+    <!-- Text: TOOLBOX -->
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="20" font-weight="600" 
+          fill="#005A9E" text-anchor="middle">TOOLBOX</text>
+    
+    <!-- Decorative element - small book icon -->
+    <g transform="translate(0, 45)">
+      <rect x="-15" y="-8" width="30" height="16" fill="#007ACC" rx="2" opacity="0.3"/>
+      <rect x="-15" y="-8" width="4" height="16" fill="#005A9E" opacity="0.3"/>
+    </g>
+  </g>
+</svg>
