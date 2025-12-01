@@ -47,75 +47,13 @@ code --install-extension morten-teinum.epub-toolbox
    ```
 3. Or in VS Code: Extensions → ⋯ (More Actions) → Install from VSIX
 
-### From Source
-
-1. Clone this repository
-2. Run `npm install` to install dependencies
-3. Run `npm run compile` to build the extension
-4. Press F5 to open a new VS Code window with the extension loaded
-5. Open an EPUB file to test
-
-## Development
-
-### Build Commands
-
-- `npm run compile` - Compile the extension once
-- `npm run watch` - Watch for changes and recompile
-- `npm run package` - Package the extension as a VSIX file
-
-### Project Structure
-
-```
-epub-toolbox/
-├── src/
-│   ├── extension.ts          # Extension entry point
-│   ├── epubProvider.ts       # Custom editor provider
-│   └── webview/
-│       └── preview.js        # Webview script with epub.js
-├── out/                      # Compiled output
-├── package.json              # Extension manifest
-├── tsconfig.json             # TypeScript config
-└── esbuild.js                # Build configuration
-```
-
 ## Requirements
 
 - VS Code version 1.80.0 or higher
 
-## Known Issues
-
-- None at this time
-
-## Releasing
-
-To create a new release, use the release script:
-
-```bash
-./scripts/release.sh 0.1.0
-```
-
-This script will:
-1. Update the version in `package.json`
-2. Commit the version change
-3. Create and push a git tag (`v0.1.0`)
-4. GitHub Actions will automatically:
-   - Build and package the extension
-   - Create a GitHub release
-   - Attach the `.vsix` file to the release
-
-Alternatively, you can manually create a release:
-```bash
-npm version 0.1.0 --no-git-tag-version
-git add package.json
-git commit -m "Bump version to 0.1.0"
-git tag v0.1.0
-git push origin main
-git push origin v0.1.0
-```
-
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, build instructions, and release process.
 
 ## License
 
