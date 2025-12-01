@@ -26,6 +26,27 @@ A Visual Studio Code extension for reading and previewing EPUB files directly in
 
 ## Installation
 
+### From VS Code Marketplace
+
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X / Cmd+Shift+X)
+3. Search for "EPUB Toolbox"
+4. Click Install
+
+Or install directly from the command line:
+```bash
+code --install-extension morten-teinum.epub-toolbox
+```
+
+### From GitHub Releases
+
+1. Download the `.vsix` file from [releases](https://github.com/mteinum/epub-toolbox/releases/latest)
+2. Install via command line:
+   ```bash
+   code --install-extension epub-toolbox-*.vsix
+   ```
+3. Or in VS Code: Extensions → ⋯ (More Actions) → Install from VSIX
+
 ### From Source
 
 1. Clone this repository
@@ -33,12 +54,6 @@ A Visual Studio Code extension for reading and previewing EPUB files directly in
 3. Run `npm run compile` to build the extension
 4. Press F5 to open a new VS Code window with the extension loaded
 5. Open an EPUB file to test
-
-### From VSIX
-
-1. Download the `.vsix` file from releases
-2. Run `code --install-extension epub-toolbox-*.vsix`
-3. Reload VS Code
 
 ## Development
 
