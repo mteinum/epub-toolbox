@@ -1,0 +1,52 @@
+{
+  "name": "epub-toolbox",
+  "displayName": "EPUB Toolbox",
+  "description": "Read and preview EPUB files directly in VS Code with full table of contents navigation",
+  "version": "0.1.0",
+  "publisher": "epub-toolbox",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "epubToolbox.epubPreview",
+        "displayName": "EPUB Preview",
+        "selector": [
+          {
+            "filenamePattern": "*.epub"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "languages": [
+      {
+        "id": "epub",
+        "extensions": [".epub"],
+        "aliases": ["EPUB"]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.22.0",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "epubjs": "^0.3.93",
+    "jszip": "^3.10.1"
+  }
+}
