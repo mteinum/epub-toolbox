@@ -33,23 +33,19 @@ jobs:
       - name: Package extension
         run: npm run package
       
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Find VSIX file
+        id: find_vsix
+        run: |
+          VSIX_FILE=$(ls *.vsix | head -n 1)
+          echo "vsix_file=$VSIX_FILE" >> $GITHUB_OUTPUT
+          echo "Found VSIX: $VSIX_FILE"
+      
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ steps.get_version.outputs.VERSION }}
+          files: ${{ steps.find_vsix.outputs.vsix_file }}
+          name: Release ${{ steps.get_version.outputs.VERSION }}
           draft: false
           prerelease: false
-      
-      - name: Upload VSIX to Release
-        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./epub-toolbox-${{ steps.get_version.outputs.VERSION }}.vsix
-          asset_name: epub-toolbox-${{ steps.get_version.outputs.VERSION }}.vsix
-          asset_content_type: application/octet-stream
