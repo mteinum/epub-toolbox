@@ -33,7 +33,7 @@ npm version ${VERSION} --no-git-tag-version --allow-same-version
 
 # Commit the version change
 echo "Committing version change..."
-git add package.json
+git add package.json package-lock.json
 git commit -m "Bump version to ${VERSION}"
 
 # Create and push tag
