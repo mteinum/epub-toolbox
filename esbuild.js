@@ -23,6 +23,7 @@ const webviewConfig = {
   platform: 'browser',
   sourcemap: true,
   minify: !watch,
+  globalName: 'webviewBundle',
 };
 
 async function build() {

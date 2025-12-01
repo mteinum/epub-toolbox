@@ -1,4 +1,4 @@
-/* global ePub */
+import ePub from 'epubjs';
 
 (function() {
     const vscode = acquireVsCodeApi();
@@ -131,8 +131,13 @@
             itemDiv.appendChild(itemIcon);
             itemDiv.appendChild(label);
             
-            // Click handler for navigation
-            itemDiv.addEventListener('click', () => {
+            // Click handler for navigation and toggle
+            itemDiv.addEventListener('click', (e) => {
+                // If has children, toggle expansion
+                if (item.subitems && item.subitems.length > 0) {
+                    toggleTocNode(li, expandIcon);
+                }
+                // Navigate to chapter
                 navigateToTocItem(item.href, itemDiv);
             });
             
@@ -303,18 +308,20 @@
             // Apply theme
             applyTheme();
             
-            // Display first chapter
-            const displayed = await rendition.display();
-            
-            // Set up location change listener
+            // Set up location change listener first
             rendition.on('relocated', handleLocationChange);
+            
+            // Show content area before displaying to avoid blank screen
+            showContent();
+            
+            // Display first page/chapter
+            await rendition.display();
             
             // Highlight first chapter in TOC
             if (tocItems.length > 0) {
                 updateActiveTocItem(tocItems[0].element);
             }
             
-            showContent();
             updateNavigationButtons();
             
         } catch (err) {
